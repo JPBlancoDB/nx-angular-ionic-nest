@@ -1,13 +1,14 @@
-import { Component } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Message } from "@tasks/api-interface";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Task } from '@tasks/contracts';
 
 @Component({
-  selector: "tasks-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'tasks-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>("/api/hello");
+  tasks$ = this.http.get<Task>('/api/tasks');
   constructor(private http: HttpClient) {}
 }

@@ -1,9 +1,10 @@
-import { Test, TestingModule } from "@nestjs/testing";
+import { Test, TestingModule } from '@nestjs/testing';
 
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { TaskStatus } from '@tasks/contracts';
 
-describe("AppController", () => {
+describe('AppController', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
@@ -13,10 +14,14 @@ describe("AppController", () => {
     }).compile();
   });
 
-  describe("getData", () => {
-    it('should return "Welcome to api!"', () => {
+  describe('getData', () => {
+    it('should return task', () => {
       const appController = app.get<AppController>(AppController);
-      expect(appController.getData()).toEqual({ message: "Welcome to api!" });
+      expect(appController.getData()).toEqual({
+        id: 1,
+        description: 'desc',
+        status: TaskStatus.New
+      });
     });
   });
 });

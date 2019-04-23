@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tasks/api-interface": ["libs/api-interface/src/index.ts"]
+      "@tasks/api-interface": ["libs/api-interface/src/index.ts"],
+      "@tasks/contracts": ["libs/contracts/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

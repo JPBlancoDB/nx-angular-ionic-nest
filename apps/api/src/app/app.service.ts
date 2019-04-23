@@ -1,9 +1,13 @@
-import { Injectable } from "@nestjs/common";
-import { Message } from "@tasks/api-interface";
+import { Injectable } from '@nestjs/common';
+import { Task, TaskStatus } from '@tasks/contracts';
 
 @Injectable()
 export class AppService {
-  getData(): Message {
-    return { message: "Welcome to api!" };
+  getData(): Task {
+    return {
+      id: 1,
+      description: 'desc',
+      status: TaskStatus.New
+    };
   }
 }

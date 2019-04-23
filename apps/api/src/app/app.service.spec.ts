@@ -1,8 +1,9 @@
-import { Test } from "@nestjs/testing";
+import { Test } from '@nestjs/testing';
 
-import { AppService } from "./app.service";
+import { AppService } from './app.service';
+import { TaskStatus } from '@tasks/contracts';
 
-describe("AppService", () => {
+describe('AppService', () => {
   let service: AppService;
 
   beforeAll(async () => {
@@ -13,9 +14,13 @@ describe("AppService", () => {
     service = app.get<AppService>(AppService);
   });
 
-  describe("getData", () => {
-    it('should return "Welcome to api!"', () => {
-      expect(service.getData()).toEqual({ message: "Welcome to api!" });
+  describe('getData', () => {
+    it('should return task', () => {
+      expect(service.getData()).toEqual({
+        id: 1,
+        description: 'desc',
+        status: TaskStatus.New
+      });
     });
   });
 });
