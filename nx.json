@@ -1,0 +1,24 @@
+{
+  "npmScope": "tasks",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "tasks-project": {
+      "tags": []
+    },
+    "tasks-project-e2e": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    },
+    "api-interface": {
+      "tags": []
+    }
+  }
+}
