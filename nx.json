@@ -14,10 +14,7 @@
     "tasks-project-e2e": {
       "tags": []
     },
-    "api": {
-      "tags": []
-    },
-    "api-interface": {
+    "backend": {
       "tags": []
     },
     "contracts": {
