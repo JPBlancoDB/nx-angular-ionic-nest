@@ -1,22 +1,22 @@
 import { Test } from '@nestjs/testing';
 
-import { AppService } from './app.service';
+import { TasksService } from './tasks.service';
 import { TaskStatus } from '@tasks/contracts';
 
-describe('AppService', () => {
-  let service: AppService;
+describe('TasksService', () => {
+  let service: TasksService;
 
   beforeAll(async () => {
     const app = await Test.createTestingModule({
-      providers: [AppService]
+      providers: [TasksService]
     }).compile();
 
-    service = app.get<AppService>(AppService);
+    service = app.get<TasksService>(TasksService);
   });
 
   describe('getData', () => {
     it('should return task', () => {
-      expect(service.getData()).toEqual({
+      expect(service.findAll()).toEqual({
         id: 1,
         description: 'desc',
         status: TaskStatus.New
