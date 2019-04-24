@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "sourceMap": false,
-    "outDir": "../../dist/out-tsc/apps/tasks-project-e2e/src"
+    "outDir": "../../dist/out-tsc/apps/web-e2e/src"
   },
   "include": ["src/**/*.ts"]
 }

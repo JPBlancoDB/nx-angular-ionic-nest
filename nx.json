@@ -8,17 +8,17 @@
     "nx.json": "*"
   },
   "projects": {
-    "tasks-project": {
-      "tags": []
-    },
-    "tasks-project-e2e": {
-      "tags": []
-    },
     "backend": {
       "tags": []
     },
     "contracts": {
       "tags": ["contracts"]
+    },
+    "web": {
+      "tags": ["web"]
+    },
+    "web-e2e": {
+      "tags": []
     }
   }
 }

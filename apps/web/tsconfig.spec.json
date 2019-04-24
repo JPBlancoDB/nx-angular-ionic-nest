@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/tasks-project/",
+    "outDir": "../../dist/out-tsc/apps/web/",
     "module": "commonjs",
     "types": ["jest", "node"]
   },
