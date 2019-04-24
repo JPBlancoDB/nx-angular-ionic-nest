@@ -1,0 +1,6 @@
+classpath: lib/mysql-connector-java-5.1.47.jar
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/tasks_project
+username=root
+password=yourPwdToDatabase
+changeLogFile:configuration.yml 
