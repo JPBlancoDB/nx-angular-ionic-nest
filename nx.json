@@ -19,6 +19,12 @@
     },
     "web-e2e": {
       "tags": []
+    },
+    "mobile": {
+      "tags": ["mobile"]
+    },
+    "mobile-e2e": {
+      "tags": []
     }
   }
 }
