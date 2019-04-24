@@ -25,6 +25,9 @@
     },
     "mobile-e2e": {
       "tags": []
+    },
+    "components-tasks": {
+      "tags": ["components-tasks"]
     }
   }
 }

@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tasks/contracts": ["libs/contracts/src/index.ts"]
+      "@tasks/contracts": ["libs/contracts/src/index.ts"],
+      "@tasks/components/tasks": ["libs/components/tasks/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

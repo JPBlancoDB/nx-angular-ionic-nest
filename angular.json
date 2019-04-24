@@ -44,9 +44,7 @@
               "apps/backend/tsconfig.app.json",
               "apps/backend/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -71,9 +69,7 @@
               "libs/contracts/tsconfig.lib.json",
               "libs/contracts/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -110,39 +106,7 @@
                 "output": "./svg"
               }
             ],
-            "styles": [
-              "apps/web/src/styles.css",
-              {
-                "input": "node_modules/@ionic/angular/css/normalize.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/structure.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/typography.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/core.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/padding.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/float-elements.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/text-alignment.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/text-transformation.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/flex-utils.css"
-              },
-              {
-                "input": "src/theme/variables.css"
-              }
-            ],
+            "styles": ["apps/web/src/styles.css"],
             "scripts": [],
             "es5BrowserSupport": true
           },
@@ -176,7 +140,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "web:build"
+            "browserTarget": "web:build",
+            "proxyConfig": "apps/web/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -197,9 +162,7 @@
               "apps/web/tsconfig.app.json",
               "apps/web/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -258,9 +221,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/web-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -280,13 +241,8 @@
             "main": "apps/mobile/src/main.ts",
             "polyfills": "apps/mobile/src/polyfills.ts",
             "tsConfig": "apps/mobile/tsconfig.app.json",
-            "assets": [
-              "apps/mobile/src/favicon.ico",
-              "apps/mobile/src/assets"
-            ],
-            "styles": [
-              "apps/mobile/src/styles.css"
-            ],
+            "assets": ["apps/mobile/src/favicon.ico", "apps/mobile/src/assets"],
+            "styles": ["apps/mobile/src/styles.css"],
             "scripts": [],
             "es5BrowserSupport": true
           },
@@ -341,9 +297,7 @@
               "apps/mobile/tsconfig.app.json",
               "apps/mobile/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -378,12 +332,37 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/mobile-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
+    },
+    "components-tasks": {
+      "root": "libs/components/tasks",
+      "sourceRoot": "libs/components/tasks/src",
+      "projectType": "library",
+      "prefix": "tasks",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/tasks/tsconfig.lib.json",
+              "libs/components/tasks/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/components/tasks/jest.config.js",
+            "tsConfig": "libs/components/tasks/tsconfig.spec.json",
+            "setupFile": "libs/components/tasks/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
