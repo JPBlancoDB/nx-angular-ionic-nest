@@ -1,26 +1,29 @@
+import { TasksService } from './tasks.service';
 import { Test } from '@nestjs/testing';
 
-import { TasksService } from './tasks.service';
-import { TaskStatus } from '@tasks/contracts';
-
 describe('TasksService', () => {
-  let service: TasksService;
+  let tasksService: TasksService;
+  const tasksRepository = {
+    findAll: jest.fn()
+  };
 
-  beforeAll(async () => {
-    const app = await Test.createTestingModule({
-      providers: [TasksService]
+  beforeEach(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        TasksService,
+        {
+          provide: 'TasksRepository',
+          useValue: tasksRepository
+        }
+      ]
     }).compile();
 
-    service = app.get<TasksService>(TasksService);
+    tasksService = module.get<TasksService>(TasksService);
   });
 
-  describe('getData', () => {
-    it('should return task', () => {
-      expect(service.findAll()).toEqual({
-        id: 1,
-        description: 'desc',
-        status: TaskStatus.New
-      });
-    });
+  it('should invoke tasksRepository when findAll is invoked', async () => {
+    await tasksService.findAll();
+
+    expect(tasksRepository.findAll).toHaveBeenCalledTimes(1);
   });
 });

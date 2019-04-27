@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { TaskStatus } from '@tasks/contracts';
+import { Task, TaskStatus } from '@tasks/contracts';
 import { TaskEntity } from '../database';
 
 @Injectable()
@@ -9,8 +9,8 @@ export class TasksService {
     private readonly TasksRepository: typeof TaskEntity
   ) {}
 
-  async findAll(): Promise<TaskEntity[]> {
-    return await this.TasksRepository.findAll<TaskEntity>();
+  async findAll(): Promise<Task[]> {
+    return (await this.TasksRepository.findAll<TaskEntity>()) as Task[];
   }
 
   async create(): Promise<TaskEntity> {

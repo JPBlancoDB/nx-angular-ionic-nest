@@ -1,27 +1,31 @@
-import { Test, TestingModule } from '@nestjs/testing';
-
 import { TasksController } from './tasks.controller';
+import { Test } from '@nestjs/testing';
 import { TasksService } from './tasks.service';
-import { TaskStatus } from '@tasks/contracts';
 
 describe('TasksController', () => {
-  let app: TestingModule;
+  let controller: TasksController;
+  let service: TasksService;
 
-  beforeAll(async () => {
-    app = await Test.createTestingModule({
+  beforeEach(async () => {
+    const module = await Test.createTestingModule({
       controllers: [TasksController],
-      providers: [TasksService]
+      providers: [
+        {
+          provide: TasksService,
+          useValue: {
+            findAll: jest.fn()
+          }
+        }
+      ]
     }).compile();
+
+    service = module.get<TasksService>(TasksService);
+    controller = module.get<TasksController>(TasksController);
   });
 
-  describe('getData', () => {
-    it('should return task', () => {
-      const tasksController = app.get<TasksController>(TasksController);
-      expect(tasksController.get()).toEqual({
-        id: 1,
-        description: 'desc',
-        status: TaskStatus.New
-      });
-    });
+  it('should invoke tasks service once when get is called', async () => {
+    await controller.get();
+
+    expect(service.findAll).toHaveBeenCalledTimes(1);
   });
 });
