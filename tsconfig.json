@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@env-backend/*": ["apps/backend/src/environments/*"],
       "@tasks/contracts": ["libs/contracts/src/index.ts"],
       "@tasks/components/tasks": ["libs/components/tasks/src/index.ts"]
     }
